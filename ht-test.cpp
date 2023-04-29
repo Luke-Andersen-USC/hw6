@@ -9,6 +9,7 @@
 using namespace std;
 int main()
 {
+		cout << "STARTING IN MAIN!" << endl;
     DoubleHashProber<std::string, MyStringHash > dh;
     HashTable<
         std::string, 
@@ -16,6 +17,10 @@ int main()
         DoubleHashProber<std::string, MyStringHash >, 
         std::hash<std::string>, 
         std::equal_to<std::string> > ht(0.7, dh);
+
+		cout << "GOT PAST THE CONSTRUCTOR!" << endl;
+
+		
 
     // This is just arbitrary code. Change it to test whatever you like about your 
     // hash table implementation.

@@ -95,5 +95,57 @@ bool boggleHelper(const std::set<std::string>& dict, const std::set<std::string>
 								   std::string word, std::set<std::string>& result, unsigned int r, unsigned int c, int dr, int dc)
 {
 //add your solution here!
+	//end of board
+	if(r == board[0].size() || c == board.size())
+	{
+		if(dict.find(word) == dict.end())
+		{
+			return false;
+		}
+		else
+		{
+			result.insert(word);
+			return true;
+		}
+	}
+	//no longer a prefix
+	if(prefix.find(word) == prefix.end())
+	{
+		if(dict.find(word) == dict.end())
+		{
+			return false;
+		}
+		else
+		{
+			result.insert(word);
+			return true;
+		}
+	}
+	
+	//should still be a prefix
+	word += board[r][c];
+	bool next = boggleHelper(dict, prefix, board, word, result, r + dr, c + dc, dr, dc);
+
+	if(next)
+	{
+		return next;
+	}
+	else
+	{
+		if(dict.find(word) != dict.end())
+		{
+			result.insert(word);
+			return true;
+		}
+		return false;
+	}
+	
+
+	//see if reached end of row or col, check dict
+
+	//return true if in dict
+	//check if prefix
+
+
 
 }
